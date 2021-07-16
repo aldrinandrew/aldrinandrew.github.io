@@ -615,33 +615,33 @@
 		</div>
 		<div class="choose animate-box">
 			<h2>Contact</h2>
-			<form action="#">
+			<form id="submit-form" action="">
 				<div class="row form-group">
 					<div class="col-md-6">
-						<input type="text" id="fname" class="form-control" placeholder="Your firstname">
+						<input name="First Name" type="text" id="fname" class="form-control" placeholder="Your firstname">
 					</div>
 				</div>
 				<div class="row form-group">
 					<div class="col-md-6">
-						<input type="text" id="lname" class="form-control" placeholder="Your lastname">
+						<input name="Last Name" type="text" id="lname" class="form-control" placeholder="Your lastname">
 					</div>
 				</div>
 
 				<div class="row form-group">
 					<div class="col-md-12">
-						<input type="text" id="email" class="form-control" placeholder="Your email address">
+						<input name="Email Id" type="text" id="email" class="form-control" placeholder="Your email address">
 					</div>
 				</div>
 
 				<div class="row form-group">
 					<div class="col-md-12">
-						<input type="text" id="subject" class="form-control" placeholder="Your subject of this message">
+						<input name="Subject" type="text" id="subject" class="form-control" placeholder="Your subject of this message">
 					</div>
 				</div>
 
 				<div class="row form-group">
 					<div class="col-md-12">
-						<textarea name="message" id="message" cols="30" rows="10" class="form-control" placeholder="Say something about us"></textarea>
+						<textarea name="Message" id="message" cols="30" rows="10" class="form-control" placeholder="Say something about us"></textarea>
 					</div>
 				</div>
 				<div class="form-group">
@@ -688,7 +688,25 @@
 	
 	<!-- Main -->
 	<script src="js/main.js"></script>
-
+	<script>
+        $("#submit-form").submit((e)=>{
+            e.preventDefault()
+            $.ajax({
+                url:"https://script.google.com/macros/s/AKfycbxKtdvgNjI8yHvdnSDjy3-2y67S5ZkRBLpqaO4E/exec",
+                data:$("#submit-form").serialize(),
+                method:"post",
+                success:function (response){
+                    alert("Form submitted successfully")
+                    window.location.reload()
+                    window.location.href="https://aldrinandrew.me/"
+                },
+                error:function (err){
+                    alert("Something Error")
+    
+                }
+            })
+        })
+    </script>	
 	</body>
 </html>
 
